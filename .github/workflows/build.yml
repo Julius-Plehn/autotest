@@ -32,7 +32,7 @@ jobs:
         sh autogen.sh
         ./configure --disable-ldiskfs
         make debs -j $(nproc)
-        sudo dpkg -i -R lustre-release/
+        sudo dpkg -i -R debs/
     - name: Run Lustre Tests
       run: |
         ls /var/
