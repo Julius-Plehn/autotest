@@ -19,7 +19,8 @@ jobs:
         # reboot
     - name: Build ZFS
       run: |
-        git clone --branch externally-compressed-data --depth 1 https://github.com/hauke96/zfs.git
+        #git clone --branch externally-compressed-data --depth 1 https://github.com/hauke96/zfs.git
+        git clone https://github.com/zfsonlinux/zfs.git
         cd zfs
         ./autogen.sh
         ./configure
