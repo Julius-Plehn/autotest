@@ -7,6 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: GCC
+      run: |
+        gcc -v
+        sudo apt-get update
+        sudo apt-get install gcc
+        gcc -v
+        reboot
     - name: Install dependencies
       run: |
         sudo apt-get update
@@ -22,7 +29,7 @@ jobs:
         cd zfs
         ./autogen.sh
         ./configure
-        make pkg-utils deb-kmod
+        make pkg-utils deb-kmod -j $(nproc)
         sudo dpkg -i *.deb
     - name: Build Lustre
       run: |
@@ -30,8 +37,8 @@ jobs:
         cd lustre-release
         sh autogen.sh
         ./configure --disable-ldiskfs
-        make debs
-        sudo dpkg -i *.deb
+        make debs -j $(nproc)
+        sudo dpkg -i lustre-release/debs/*.deb
     - name: Run Lustre Tests
       run: |
         ls /var/
