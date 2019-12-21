@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build ZFS & Lustre
-      uses: ./.github/actions/build
+      uses: ./.github/workdlows/build
     - name: Run Lustre Test
       run: |
         ls /var/
