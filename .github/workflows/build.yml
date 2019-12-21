@@ -1,12 +1,10 @@
-name: Build
+name: Build & Test
 
 on: [push]
 
 jobs:
-  build:
-
+  buildtest:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: Install dependencies
@@ -34,5 +32,12 @@ jobs:
         ./configure --disable-ldiskfs
         make debs
         sudo apt install *.deb
+    - name: Run Lustre Tests
+      run: |
+        ls /var/
+        sudo groupadd -g 500 tests && sudo useradd -u 500 -g 500 runas
+        cd /var/lib/lustre/tests
+        VERBOSE=true ./llmount.sh
+        ./auster -v -r sanity.sh --only 0a
         
       
