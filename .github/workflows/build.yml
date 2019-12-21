@@ -35,12 +35,9 @@ jobs:
         #sudo dpkg -i -R debs/
         find . -name '*.deb' 
         sudo apt install $(find . -name '*.deb' | tr '\n' ' ')
+        sudo dpkg -L ./debs/lustre-tests_2.12.3-1_amd64.deb
     - name: Run Lustre Tests
       run: |
-        ls /var/
-        ls /var/lib/
-        echo $LUSTRE
-        which lctl
         sudo groupadd -g 500 tests && sudo useradd -u 500 -g 500 runas
         cd /var/lib/lustre/tests
         VERBOSE=true ./llmount.sh
