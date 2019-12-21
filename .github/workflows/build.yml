@@ -4,17 +4,12 @@ on: [push]
 
 jobs:
   buildtest:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04 #ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: GCC
-      run: |
-        gcc -v
-        sudo apt-get update
-        sudo apt-get install gcc-8
-        gcc -v
     - name: Install dependencies
       run: |
+        gcc -v
         sudo apt-get update
         # sudo apt-get upgrade
         # Lustre
