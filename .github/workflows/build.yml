@@ -17,8 +17,10 @@ jobs:
         echo test, and deploy your project.
     - name: Dependencies
       run: |
-        apt-get install ed module-assistant build-essential libreadline-dev debhelper dpatch automake libsnmp-dev bzip2 quilt linux-headers-generic rsync libtool python-docutils libyaml-dev libselinux-dev pkg-config mpi-default-dev
-        apt-get install zfs-dkms
+        sudo apt-get update
+        sudo apt-get upgrade
+        sudo apt-get install ed module-assistant build-essential libreadline-dev debhelper dpatch automake libsnmp-dev bzip2 quilt linux-headers-generic rsync libtool python-docutils libyaml-dev libselinux-dev pkg-config mpi-default-dev
+        sudo apt-get install zfs-dkms
         # reboot
         git clone --branch b2_12 --depth 1 git://git.whamcloud.com/fs/lustre-release.git
         cd lustre-release
