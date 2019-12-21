@@ -22,7 +22,7 @@ jobs:
         cd zfs
         ./autogen.sh
         ./configure
-        make deb
+        make pkg-utils deb-kmod
         sudo dpkg -i *.deb
     - name: Build Lustre
       run: |
