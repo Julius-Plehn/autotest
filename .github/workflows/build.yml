@@ -33,7 +33,8 @@ jobs:
         ./configure --disable-ldiskfs
         make debs -j $(nproc)
         #sudo dpkg -i -R debs/
-        sudo apt install *.deb
+        find . -name '*.deb' 
+        sudo apt install $(find . -name '*.deb' | tr '\n' ' ')
     - name: Run Lustre Tests
       run: |
         ls /var/
