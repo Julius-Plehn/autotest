@@ -9,7 +9,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Install dependencies
       run: |
-        gcc -v
         sudo apt-get update
         # sudo apt-get upgrade
         # Lustre
@@ -24,7 +23,7 @@ jobs:
         cd zfs
         ./autogen.sh
         ./configure
-        make pkg-utils deb-kmod -j $(nproc)
+        make pkg-utils deb-kmod
         sudo dpkg -i *.deb
     - name: Build Lustre
       run: |
