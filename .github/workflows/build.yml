@@ -10,7 +10,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get upgrade
+        #sudo apt-get upgrade
         # Lustre
         sudo apt-get install ed module-assistant build-essential libreadline-dev debhelper dpatch automake libsnmp-dev bzip2 quilt linux-headers-generic rsync libtool python-docutils libyaml-dev libselinux-dev pkg-config mpi-default-dev
         # ZFS
@@ -39,6 +39,7 @@ jobs:
       run: |
         ls -lah /mnt
         ls -lah /tmp
+        sudo modprobe zfs
         zpool version
         cat /proc/mounts
         sudo groupadd -g 500 tests && sudo useradd -u 500 -g 500 runas
