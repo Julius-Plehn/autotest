@@ -38,7 +38,8 @@ jobs:
     - name: Run Lustre Tests
       run: |
         sudo groupadd -g 500 tests && sudo useradd -u 500 -g 500 runas
-        cd /usr/lib/lustre/tests
+        sudo cd /usr/lib/lustre/tests
+        sudo cat cfg/local.sh
         sudo echo -e "FSTYPE=zfs\n$(cat cfg/local.sh)" > cfg/local.sh
         VERBOSE=true sudo ./llmount.sh
         sudo ./auster -v -r sanity.sh --only 0a
