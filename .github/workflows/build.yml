@@ -37,11 +37,14 @@ jobs:
         sudo apt install $(find . -name '*.deb' | tr '\n' ' ')
     - name: Run Lustre Tests
       run: |
+        ls -lah /mnt
+        ls -lah /tmp
+        zpool version
+        cat /proc/mounts
         sudo groupadd -g 500 tests && sudo useradd -u 500 -g 500 runas
         cd /usr/lib/lustre/tests
         # sudo echo -e "FSTYPE=zfs\n$(sudo cat cfg/local.sh)" > cfg/local.sh
         sudo sed -i '1s/^/FSTYPE=zfs\n/' cfg/local.sh 
-        df -h
         sudo VERBOSE=true ./llmount.sh
         sudo ./auster -v -r sanity.sh --only 0a
         
