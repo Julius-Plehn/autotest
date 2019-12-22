@@ -10,7 +10,7 @@ jobs:
     - name: Install dependencies
       run: |
         whoami
-        sudo -s
+        sudo su root
         whoami
         apt-get update
         # sudo apt-get upgrade
