@@ -39,7 +39,7 @@ jobs:
       run: |
         sudo groupadd -g 500 tests && sudo useradd -u 500 -g 500 runas
         cd /usr/lib/lustre/tests
-        VERBOSE=true ./llmount.sh
-        ./auster -v -r sanity.sh --only 0a
+        VERBOSE=true sudo ./llmount.sh
+        sudo ./auster -v -r sanity.sh --only 0a
         
       
