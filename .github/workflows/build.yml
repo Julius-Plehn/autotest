@@ -9,7 +9,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Install dependencies
       run: |
-        sudo cat /etc/sudoers
         sudo apt-get update
         # sudo apt-get upgrade
         # Lustre
@@ -40,7 +39,7 @@ jobs:
       run: |
         sudo groupadd -g 500 tests && sudo useradd -u 500 -g 500 runas
         cd /usr/lib/lustre/tests
-        echo 'FSTYPE=zfs' | sudo cat - cfg/local.sh > cfg/temp && sudo mv cfg/temp cfg/local.sh
+        sudo echo -e "FSTYPE=zfs\n$(cat cfg/local.sh)" > cfg/local.sh
         VERBOSE=true sudo ./llmount.sh
         sudo ./auster -v -r sanity.sh --only 0a
         
