@@ -10,7 +10,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        # sudo apt-get upgrade
+        sudo apt-get upgrade
         # Lustre
         sudo apt-get install ed module-assistant build-essential libreadline-dev debhelper dpatch automake libsnmp-dev bzip2 quilt linux-headers-generic rsync libtool python-docutils libyaml-dev libselinux-dev pkg-config mpi-default-dev
         # ZFS
