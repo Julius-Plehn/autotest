@@ -35,11 +35,10 @@ jobs:
         #sudo dpkg -i -R debs/
         find . -name '*.deb' 
         sudo apt install $(find . -name '*.deb' | tr '\n' ' ')
-        sudo dpkg -L lustre-tests
     - name: Run Lustre Tests
       run: |
         sudo groupadd -g 500 tests && sudo useradd -u 500 -g 500 runas
-        cd /var/lib/lustre/tests
+        cd /usr/lib/lustre/tests
         VERBOSE=true ./llmount.sh
         ./auster -v -r sanity.sh --only 0a
         
