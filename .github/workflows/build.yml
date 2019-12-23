@@ -25,8 +25,7 @@ jobs:
         ./configure
         make pkg-utils deb-kmod
         ls -lah *.deb
-        #sudo dpkg -i *.deb
-        sudo dpkg -i kmod-zfs-4.15.0-1064-azure_0.8.0*.deb
+        sudo dpkg -i *.deb
     - name: Build Lustre
       run: |
         git clone --branch b2_12 --depth 1 git://git.whamcloud.com/fs/lustre-release.git
@@ -41,7 +40,7 @@ jobs:
       run: |
         ls -lah /mnt
         ls -lah /tmp
-        sudo modprobe zfs
+        sudo modprobe zfs -v
         zpool version
         cat /proc/mounts
         sudo groupadd -g 500 tests && sudo useradd -u 500 -g 500 runas
