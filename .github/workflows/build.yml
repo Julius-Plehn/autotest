@@ -23,11 +23,10 @@ jobs:
         cd zfs
         ./autogen.sh
         ./configure
-        sudo make install
-        #make pkg-utils deb-kmod
-        #ls -lah *.deb
+        make pkg-utils deb-kmod
+        ls -lah *.deb
         #sudo dpkg -i *.deb
-        #sudo dpkg -i kmod-zfs-4.15.0-1064-azure_0.8.0-482_amd64.deb
+        sudo dpkg -i kmod-zfs-4.15.0-1064-azure_0.8.0*.deb
     - name: Build Lustre
       run: |
         git clone --branch b2_12 --depth 1 git://git.whamcloud.com/fs/lustre-release.git
