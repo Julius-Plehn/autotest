@@ -10,9 +10,9 @@ jobs:
     - name: Install dependencies
       run: |
         lsmod | less
-         ls -lah /lib/modules/
+        ls -lah /lib/modules/
         ls -lah /lib/modules/*/kernel/zfs/
-        rm -rf /lib/modules/*/kernel/zfs/
+        sudo rm -rf /lib/modules/*/kernel/zfs/
         depmod -a
         
         sudo apt-get update
