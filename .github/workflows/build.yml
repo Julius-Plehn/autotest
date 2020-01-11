@@ -12,7 +12,9 @@ jobs:
         lsmod | less
         ls -lah /lib/modules/
         ls -lah /lib/modules/*/kernel/zfs/
+        ls -lah /lib/modules/*/kernel/spl/
         sudo rm -rf /lib/modules/*/kernel/zfs/
+        sudo rm -rf /lib/modules/*/kernel/spl/
         depmod -a
         
         sudo apt-get update
