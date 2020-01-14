@@ -53,7 +53,7 @@ jobs:
         zpool version
         cat /proc/mounts
         sudo groupadd -g 500 tests && sudo useradd -u 500 -g 500 runas
-        cd /usr/lib/lustre/ && patch -p1 << EOF
+        cd /usr/lib/lustre/ && sudo patch -p1 << EOF
         --- lustre/tests/test-framework.sh  2019-10-06 17:33:49.114766351 +0200
         +++ lustre/tests/test-framework_notouch.sh  2019-10-08 18:14:28.778186388 +0200
         @@ -4426,7 +4426,7 @@
